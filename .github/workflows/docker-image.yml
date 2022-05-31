@@ -38,7 +38,7 @@ jobs:
         # end of optional handling for multi line json
         echo "::set-output name=packageJson::$content"
     - run: |
-          echo "tag={{fromJson(steps.set_var.outputs.packageJson).major}}.{{fromJson(steps.set_var.outputs.packageJson).minor}}.{{fromJson(steps.set_var.outputs.packageJson).patch}}" >> $GITHUB_ENV          
+          echo "tag=${{fromJson(steps.set_var.outputs.packageJson).major}}.${{fromJson(steps.set_var.outputs.packageJson).minor}}.${{fromJson(steps.set_var.outputs.packageJson).patch}}" >> $GITHUB_ENV          
     - run: |
           echo "${{env.tag}}"
     - name: Build and push Docker image
