@@ -23,4 +23,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/$REPO_NAME:$(date +%s)
     - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USERNAME}}/$REPO_NAME
+      run: docker push ${{secrets.DOCKER_USERNAME}}/$REPO_NAME:$(date +%s)
