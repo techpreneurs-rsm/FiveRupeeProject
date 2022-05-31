@@ -36,8 +36,9 @@ jobs:
         content="${content//$'\n'/'%0A'}"
         content="${content//$'\r'/'%0D'}"
         # end of optional handling for multi line json
-        echo "$content"
         echo "::set-output name=packageJson::$content"
+    - run: |
+          echo "${{fromJson(steps.set_var.outputs.packageJson).major}}"
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
