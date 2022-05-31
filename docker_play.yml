@@ -1,18 +1,14 @@
-- hosts: all
-  become: true
+---
+
+- hosts: localhost
+  connection: local   
 
   tasks:
-    - name: log into docker hub registry
-      docker_login:
-        email: "rranga99@gmail.com"
-        username: "rranga99"
-        password: "Rubber99!"
-
     - name: ensure a container is running
       docker_container:
         name: my_container
         state: started
-        image: "rranga99/techpreneursrsm:latest"
+        image: "rranga99/techpreneursrsm:1.0.0"
         pull: true
         ports:
           - "8000:80"
